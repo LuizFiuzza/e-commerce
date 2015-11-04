@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{vendaBean.id}'/>
+		<f:event type="preRenderView" listener='#{vendaBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Venda"/>
+
+	<ui:define name="header">
+		Venda
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Venda
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="vendaBeanVendaCliente" value="Cliente:"/>
+			<h:panelGrid columnClasses="label,component,required" columns="3" id="vendaBeanVendaCliente">
+				<h:outputLabel for="vendaBeanVendaClienteNome" value="Nome:"/>
+				<h:outputText id="vendaBeanVendaClienteNome" value="#{vendaBean.venda.cliente.nome}"/>
+				<h:outputText/>
+				<h:outputLabel for="vendaBeanVendaClienteCpf" value="Cpf:"/>
+				<h:outputText id="vendaBeanVendaClienteCpf" value="#{vendaBean.venda.cliente.cpf}"/>
+				<h:outputText/>
+				<h:outputLabel for="vendaBeanVendaClienteEmail" value="Email:"/>
+				<h:outputText id="vendaBeanVendaClienteEmail" value="#{vendaBean.venda.cliente.email}"/>
+				<h:outputText/>
+				<h:outputLabel for="vendaBeanVendaClienteEnd" value="End:"/>
+				<h:outputText id="vendaBeanVendaClienteEnd" value="#{vendaBean.venda.cliente.end}"/>
+				<h:outputText/>
+				<h:outputLabel for="vendaBeanVendaClienteTelefone" value="Telefone:"/>
+				<h:outputText id="vendaBeanVendaClienteTelefone" value="#{vendaBean.venda.cliente.telefone}"/>
+				<h:outputText/>
+			</h:panelGrid>
+			<h:outputText/>
+			<h:outputLabel for="vendaBeanVendaProduto" value="Produto:"/>
+			<h:panelGrid columnClasses="label,component,required" columns="3" id="vendaBeanVendaProduto">
+				<h:outputLabel for="vendaBeanVendaProdutoNome" value="Nome:"/>
+				<h:outputText id="vendaBeanVendaProdutoNome" value="#{vendaBean.venda.produto.nome}"/>
+				<h:outputText/>
+				<h:outputLabel for="vendaBeanVendaProdutoPreco" value="Preco:"/>
+				<h:outputText id="vendaBeanVendaProdutoPreco" value="#{vendaBean.venda.produto.preco}"/>
+				<h:outputText/>
+				<h:outputLabel for="vendaBeanVendaProdutoEstoque" value="Estoque:"/>
+				<h:outputText id="vendaBeanVendaProdutoEstoque" value="#{vendaBean.venda.produto.estoque}"/>
+				<h:outputText/>
+				<h:outputLabel for="vendaBeanVendaProdutoFabricante" value="Fabricante:"/>
+				<h:panelGrid columnClasses="label,component,required" columns="3" id="vendaBeanVendaProdutoFabricante">
+					<h:outputLabel for="vendaBeanVendaProdutoFabricanteNome" value="Nome:"/>
+					<h:outputText id="vendaBeanVendaProdutoFabricanteNome" value="#{vendaBean.venda.produto.fabricante.nome}"/>
+					<h:outputText/>
+				</h:panelGrid>
+				<h:outputText/>
+				<h:outputLabel for="vendaBeanVendaProdutoPrecoCusto" value="Preco Custo:"/>
+				<h:outputText id="vendaBeanVendaProdutoPrecoCusto" value="#{vendaBean.venda.produto.precoCusto}"/>
+				<h:outputText/>
+				<h:outputLabel for="vendaBeanVendaProdutoMargemLucro" value="Margem Lucro:"/>
+				<h:outputText id="vendaBeanVendaProdutoMargemLucro" value="#{vendaBean.venda.produto.margemLucro}"/>
+				<h:outputText/>
+			</h:panelGrid>
+			<h:outputText/>
+			<h:outputLabel for="vendaBeanVendaValorItem" value="Valor Item:"/>
+			<h:outputText id="vendaBeanVendaValorItem" value="#{vendaBean.venda.valorItem}"/>
+			<h:outputText/>
+			<h:outputLabel for="vendaBeanVendaValorTotal" value="Valor Total:"/>
+			<h:outputText id="vendaBeanVendaValorTotal" value="#{vendaBean.venda.valorTotal}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

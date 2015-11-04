@@ -1,0 +1,54 @@
+<header ng-switch on="$location.path().indexOf('/Clientes/new') > -1">
+    <h3 ng-switch-when="true">Create a new Cliente</h3>
+    <h3 ng-switch-when="false">View or edit Cliente</h3>
+</header>
+<form id="ClienteForm" name="ClienteForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+
+    <div class="form-group" ng-class="{'has-error': ClienteForm.nome.$invalid}">
+        <label for="nome" class="col-sm-2 control-label">Nome</label>
+        <div id="nomeControls" class="col-sm-10">
+            <input id="nome" name="nome" type="text" class="form-control" ng-model="cliente.nome" placeholder="Enter the Cliente Nome"></input>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ClienteForm.cpf.$invalid}">
+        <label for="cpf" class="col-sm-2 control-label">Cpf</label>
+        <div id="cpfControls" class="col-sm-10">
+            <input id="cpf" name="cpf" type="text" class="form-control" ng-model="cliente.cpf" placeholder="Enter the Cliente Cpf"></input>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ClienteForm.email.$invalid}">
+        <label for="email" class="col-sm-2 control-label">Email</label>
+        <div id="emailControls" class="col-sm-10">
+            <input id="email" name="email" type="text" class="form-control" ng-model="cliente.email" placeholder="Enter the Cliente Email"></input>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ClienteForm.end.$invalid}">
+        <label for="end" class="col-sm-2 control-label">End</label>
+        <div id="endControls" class="col-sm-10">
+            <input id="end" name="end" type="text" class="form-control" ng-model="cliente.end" placeholder="Enter the Cliente End"></input>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ClienteForm.telefone.$invalid}">
+        <label for="telefone" class="col-sm-2 control-label">Telefone</label>
+        <div id="telefoneControls" class="col-sm-10">
+            <input id="telefone" name="telefone" type="text" class="form-control" ng-model="cliente.telefone" placeholder="Enter the Cliente Telefone"></input>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveCliente" name="saveCliente" class="btn btn-primary" ng-disabled="isClean() || ClienteForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteCliente" name="deleteCliente" class="btn btn-danger" ng-show="cliente.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

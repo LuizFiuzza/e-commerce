@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{vendaBean.page}'/>
+		<f:event type="preRenderView" listener='#{vendaBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Venda entities"/>
+
+	<ui:define name="header">
+		Venda
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Venda entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3"/>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{vendaBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{vendaBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="vendaBeanPageItems" styleClass="data-table" value="#{vendaBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Cliente"/>
+					</f:facet>
+					<h:link outcome="/Faces/venda/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemCliente" value="#{_item.cliente}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Produto"/>
+					</f:facet>
+					<h:link outcome="/Faces/venda/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemProduto" value="#{_item.produto}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Valor Item"/>
+					</f:facet>
+					<h:link outcome="/Faces/venda/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemValorItem" value="#{_item.valorItem}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Valor Total"/>
+					</f:facet>
+					<h:link outcome="/Faces/venda/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemValorTotal" value="#{_item.valorTotal}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{vendaBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

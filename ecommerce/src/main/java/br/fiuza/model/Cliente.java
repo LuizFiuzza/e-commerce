@@ -8,10 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Version;
 import java.lang.Override;
-import br.fiuza.model.Fabricante;
 
 @Entity
-public class Produto implements Serializable
+public class Cliente implements Serializable
 {
 
    @Id
@@ -23,22 +22,19 @@ public class Produto implements Serializable
    private int version;
 
    @Column
-   private String Nome;
+   private String nome;
 
    @Column
-   private Double precoVenda;
+   private String cpf;
 
    @Column
-   private int estoque;
+   private String email;
 
    @Column
-   private Fabricante fabricante;
+   private String end;
 
    @Column
-   private Double precoCusto;
-
-   @Column
-   private Double MargemLucro;
+   private String telefone;
 
    public Long getId()
    {
@@ -67,11 +63,11 @@ public class Produto implements Serializable
       {
          return true;
       }
-      if (!(obj instanceof Produto))
+      if (!(obj instanceof Cliente))
       {
          return false;
       }
-      Produto other = (Produto) obj;
+      Cliente other = (Cliente) obj;
       if (id != null)
       {
          if (!id.equals(other.id))
@@ -93,77 +89,68 @@ public class Produto implements Serializable
 
    public String getNome()
    {
-      return Nome;
+      return nome;
    }
 
-   public void setNome(String Nome)
+   public void setNome(String nome)
    {
-      this.Nome = Nome;
+      this.nome = nome;
    }
 
-   public Double getPreco()
+   public String getCpf()
    {
-      return precoVenda;
+      return cpf;
    }
 
-   public void setPreco(Double preco)
+   public void setCpf(String cpf)
    {
-      this.precoVenda = preco;
+      this.cpf = cpf;
    }
 
-   public int getEstoque()
+   public String getEmail()
    {
-      return estoque;
+      return email;
    }
 
-   public void setEstoque(int estoque)
+   public void setEmail(String email)
    {
-      this.estoque = estoque;
+      this.email = email;
    }
 
-   public Fabricante getFabricante()
+   public String getEnd()
    {
-      return fabricante;
+      return end;
    }
 
-   public void setFabricante(Fabricante fabricante)
+   public void setEnd(String end)
    {
-      this.fabricante = fabricante;
+      this.end = end;
    }
 
-   public Double getPrecoCusto()
+   public String getTelefone()
    {
-      return precoCusto;
+      return telefone;
    }
 
-   public void setPrecoCusto(Double precoCusto)
+   public void setTelefone(String telefone)
    {
-      this.precoCusto = precoCusto;
-   }
-
-   public Double getMargemLucro()
-   {
-      return MargemLucro;
-   }
-
-   public void setMargemLucro(Double MargemLucro)
-   {
-      this.MargemLucro = MargemLucro;
+      this.telefone = telefone;
    }
 
    @Override
    public String toString()
    {
       String result = getClass().getSimpleName() + " ";
-      if (Nome != null && !Nome.trim().isEmpty())
-         result += "Nome: " + Nome;
-      if (precoVenda != null)
-         result += ", precoVenda: " + precoVenda;
-      result += ", estoque: " + estoque;
-      if (precoCusto != null)
-         result += ", precoCusto: " + precoCusto;
-      if (MargemLucro != null)
-         result += ", MargemLucro: " + MargemLucro;
+      if (nome != null && !nome.trim().isEmpty())
+         result += "nome: " + nome;
+      if (cpf != null && !cpf.trim().isEmpty())
+         result += ", cpf: " + cpf;
+      if (email != null && !email.trim().isEmpty())
+         result += ", email: " + email;
+      if (end != null && !end.trim().isEmpty())
+         result += ", end: " + end;
+      if (telefone != null && !telefone.trim().isEmpty())
+         result += ", telefone: " + telefone;
       return result;
    }
 }

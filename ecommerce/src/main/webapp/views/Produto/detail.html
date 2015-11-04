@@ -1,0 +1,65 @@
+<header ng-switch on="$location.path().indexOf('/Produtos/new') > -1">
+    <h3 ng-switch-when="true">Create a new Produto</h3>
+    <h3 ng-switch-when="false">View or edit Produto</h3>
+</header>
+<form id="ProdutoForm" name="ProdutoForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+
+    <div class="form-group" ng-class="{'has-error': ProdutoForm.Nome.$invalid}">
+        <label for="Nome" class="col-sm-2 control-label">Nome</label>
+        <div id="NomeControls" class="col-sm-10">
+            <input id="Nome" name="Nome" type="text" class="form-control" ng-model="produto.Nome" placeholder="Enter the Produto Nome"></input>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProdutoForm.preco.$invalid}">
+        <label for="preco" class="col-sm-2 control-label">Preco</label>
+        <div id="precoControls" class="col-sm-10">
+            <input id="preco" name="preco" type="number" class="form-control" ng-model="produto.preco" placeholder="Enter the Produto Preco"></input>
+            <span class="help-block error" ng-show="ProdutoForm.preco.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProdutoForm.estoque.$invalid}">
+        <label for="estoque" class="col-sm-2 control-label">Estoque</label>
+        <div id="estoqueControls" class="col-sm-10">
+            <input id="estoque" name="estoque" type="number" class="form-control" ng-model="produto.estoque" placeholder="Enter the Produto Estoque"></input>
+            <span class="help-block error" ng-show="ProdutoForm.estoque.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProdutoForm.fabricante.$invalid}">
+        <label for="fabricante" class="col-sm-2 control-label">Fabricante</label>
+        <div id="fabricanteControls" class="col-sm-10">
+            <input id="fabricante" name="fabricante" type="text" class="form-control" ng-model="produto.fabricante" placeholder="Enter the Produto Fabricante"></input>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProdutoForm.precoCusto.$invalid}">
+        <label for="precoCusto" class="col-sm-2 control-label">Preco Custo</label>
+        <div id="precoCustoControls" class="col-sm-10">
+            <input id="precoCusto" name="precoCusto" type="number" class="form-control" ng-model="produto.precoCusto" placeholder="Enter the Produto Preco Custo"></input>
+            <span class="help-block error" ng-show="ProdutoForm.precoCusto.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProdutoForm.MargemLucro.$invalid}">
+        <label for="MargemLucro" class="col-sm-2 control-label">Margem Lucro</label>
+        <div id="MargemLucroControls" class="col-sm-10">
+            <input id="MargemLucro" name="MargemLucro" type="number" class="form-control" ng-model="produto.MargemLucro" placeholder="Enter the Produto Margem Lucro"></input>
+            <span class="help-block error" ng-show="ProdutoForm.MargemLucro.$error.number">not a number</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveProduto" name="saveProduto" class="btn btn-primary" ng-disabled="isClean() || ProdutoForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteProduto" name="deleteProduto" class="btn btn-danger" ng-show="produto.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

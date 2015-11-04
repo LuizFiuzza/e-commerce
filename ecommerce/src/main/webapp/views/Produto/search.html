@@ -1,0 +1,103 @@
+<div class="form-horizontal">
+    <h3>Create a new Produto</h3>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-sm-2">
+            <a id="Create" name="Create" class="btn btn-primary" href="#/Produtos/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div>
+    <h3>Search for Produtos</h3>
+    <form id="ProdutoSearch" class="form-horizontal">
+        
+
+    <div class="form-group">
+        <label for="Nome" class="col-sm-2 control-label">Nome</label>
+        <div class="col-sm-10">
+            <input id="Nome" name="Nome" class="form-control" type="text" ng-model="search.Nome" placeholder="Enter the Produto Nome"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="preco" class="col-sm-2 control-label">Preco</label>
+        <div class="col-sm-10">
+            <input id="preco" name="preco" class="form-control" type="text" ng-model="search.preco" placeholder="Enter the Produto Preco"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="estoque" class="col-sm-2 control-label">Estoque</label>
+        <div class="col-sm-10">
+            <input id="estoque" name="estoque" class="form-control" type="text" ng-model="search.estoque" placeholder="Enter the Produto Estoque"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="fabricante" class="col-sm-2 control-label">Fabricante</label>
+        <div class="col-sm-10">
+            <input id="fabricante" name="fabricante" class="form-control" type="text" ng-model="search.fabricante" placeholder="Enter the Produto Fabricante"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="precoCusto" class="col-sm-2 control-label">Preco Custo</label>
+        <div class="col-sm-10">
+            <input id="precoCusto" name="precoCusto" class="form-control" type="text" ng-model="search.precoCusto" placeholder="Enter the Produto Preco Custo"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="MargemLucro" class="col-sm-2 control-label">Margem Lucro</label>
+        <div class="col-sm-10">
+            <input id="MargemLucro" name="MargemLucro" class="form-control" type="text" ng-model="search.MargemLucro" placeholder="Enter the Produto Margem Lucro"></input>
+        </div>
+    </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results">
+        <div class="table-responsive">
+        <table class="table table-responsive table-bordered table-striped clearfix">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preco</th>
+                    <th>Estoque</th>
+                    <th>Fabricante</th>
+                    <th>Preco Custo</th>
+                    <th>Margem Lucro</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                    <td><a href="#/Produtos/edit/{{result.id}}">{{result.Nome}}</a></td>
+                    <td><a href="#/Produtos/edit/{{result.id}}">{{result.preco}}</a></td>
+                    <td><a href="#/Produtos/edit/{{result.id}}">{{result.estoque}}</a></td>
+                    <td><a href="#/Produtos/edit/{{result.id}}">{{result.fabricante}}</a></td>
+                    <td><a href="#/Produtos/edit/{{result.id}}">{{result.precoCusto}}</a></td>
+                    <td><a href="#/Produtos/edit/{{result.id}}">{{result.MargemLucro}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ul class="pagination pagination-centered">
+        <li ng-class="{disabled:currentPage == 0}">
+            <a id="prev" href ng-click="previous()">«</a>
+        </li>
+        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" href ng-click="next()">»</a>
+        </li>
+    </ul>
+
+</div>

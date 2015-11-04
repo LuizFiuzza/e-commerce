@@ -1,0 +1,94 @@
+<div class="form-horizontal">
+    <h3>Create a new Cliente</h3>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-sm-2">
+            <a id="Create" name="Create" class="btn btn-primary" href="#/Clientes/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div>
+    <h3>Search for Clientes</h3>
+    <form id="ClienteSearch" class="form-horizontal">
+        
+
+    <div class="form-group">
+        <label for="nome" class="col-sm-2 control-label">Nome</label>
+        <div class="col-sm-10">
+            <input id="nome" name="nome" class="form-control" type="text" ng-model="search.nome" placeholder="Enter the Cliente Nome"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="cpf" class="col-sm-2 control-label">Cpf</label>
+        <div class="col-sm-10">
+            <input id="cpf" name="cpf" class="form-control" type="text" ng-model="search.cpf" placeholder="Enter the Cliente Cpf"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <input id="email" name="email" class="form-control" type="text" ng-model="search.email" placeholder="Enter the Cliente Email"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="end" class="col-sm-2 control-label">End</label>
+        <div class="col-sm-10">
+            <input id="end" name="end" class="form-control" type="text" ng-model="search.end" placeholder="Enter the Cliente End"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="telefone" class="col-sm-2 control-label">Telefone</label>
+        <div class="col-sm-10">
+            <input id="telefone" name="telefone" class="form-control" type="text" ng-model="search.telefone" placeholder="Enter the Cliente Telefone"></input>
+        </div>
+    </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results">
+        <div class="table-responsive">
+        <table class="table table-responsive table-bordered table-striped clearfix">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Cpf</th>
+                    <th>Email</th>
+                    <th>End</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                    <td><a href="#/Clientes/edit/{{result.id}}">{{result.nome}}</a></td>
+                    <td><a href="#/Clientes/edit/{{result.id}}">{{result.cpf}}</a></td>
+                    <td><a href="#/Clientes/edit/{{result.id}}">{{result.email}}</a></td>
+                    <td><a href="#/Clientes/edit/{{result.id}}">{{result.end}}</a></td>
+                    <td><a href="#/Clientes/edit/{{result.id}}">{{result.telefone}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ul class="pagination pagination-centered">
+        <li ng-class="{disabled:currentPage == 0}">
+            <a id="prev" href ng-click="previous()">«</a>
+        </li>
+        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" href ng-click="next()">»</a>
+        </li>
+    </ul>
+
+</div>
