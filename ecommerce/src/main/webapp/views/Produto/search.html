@@ -34,13 +34,6 @@
     </div>
 
     <div class="form-group">
-        <label for="fabricante" class="col-sm-2 control-label">Fabricante</label>
-        <div class="col-sm-10">
-            <input id="fabricante" name="fabricante" class="form-control" type="text" ng-model="search.fabricante" placeholder="Enter the Produto Fabricante"></input>
-        </div>
-    </div>
-
-    <div class="form-group">
         <label for="precoCusto" class="col-sm-2 control-label">Preco Custo</label>
         <div class="col-sm-10">
             <input id="precoCusto" name="precoCusto" class="form-control" type="text" ng-model="search.precoCusto" placeholder="Enter the Produto Preco Custo"></input>
@@ -53,6 +46,7 @@
             <input id="MargemLucro" name="MargemLucro" class="form-control" type="text" ng-model="search.MargemLucro" placeholder="Enter the Produto Margem Lucro"></input>
         </div>
     </div>
+
 
 
         <div class="form-group">
@@ -70,7 +64,6 @@
                     <th>Nome</th>
                     <th>Preco</th>
                     <th>Estoque</th>
-                    <th>Fabricante</th>
                     <th>Preco Custo</th>
                     <th>Margem Lucro</th>
                 </tr>
@@ -80,7 +73,6 @@
                     <td><a href="#/Produtos/edit/{{result.id}}">{{result.Nome}}</a></td>
                     <td><a href="#/Produtos/edit/{{result.id}}">{{result.preco}}</a></td>
                     <td><a href="#/Produtos/edit/{{result.id}}">{{result.estoque}}</a></td>
-                    <td><a href="#/Produtos/edit/{{result.id}}">{{result.fabricante}}</a></td>
                     <td><a href="#/Produtos/edit/{{result.id}}">{{result.precoCusto}}</a></td>
                     <td><a href="#/Produtos/edit/{{result.id}}">{{result.MargemLucro}}</a></td>
                 </tr>

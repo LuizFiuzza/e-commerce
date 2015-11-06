@@ -10,8 +10,10 @@ import javax.persistence.Version;
 import java.lang.Override;
 import br.fiuza.model.Cliente;
 import br.fiuza.model.Produto;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class Venda implements Serializable
 {
 

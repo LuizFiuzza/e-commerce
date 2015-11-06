@@ -1,6 +1,6 @@
 
 
-angular.module('ecommerce').controller('SearchProdutoController', function($scope, $http, ProdutoResource ) {
+angular.module('ecommerce').controller('SearchProdutoController', function($scope, $http, ProdutoResource , FabricanteResource) {
 
     $scope.search={};
     $scope.currentPage = 0;

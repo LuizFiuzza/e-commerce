@@ -198,9 +198,11 @@ public class FabricanteBean implements Serializable
       this.example = example;
    }
 
+   
+   //
    public String search()
    {
-      this.page = 0;
+      this.page = 3;
       return null;
    }
 

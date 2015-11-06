@@ -9,8 +9,13 @@ import javax.persistence.Column;
 import javax.persistence.Version;
 import java.lang.Override;
 import br.fiuza.model.Fabricante;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Set;
+import java.util.HashSet;
+import javax.persistence.OneToMany;
 
 @Entity
+@XmlRootElement
 public class Produto implements Serializable
 {
 
@@ -32,13 +37,13 @@ public class Produto implements Serializable
    private int estoque;
 
    @Column
-   private Fabricante fabricante;
-
-   @Column
    private Double precoCusto;
 
    @Column
    private Double MargemLucro;
+
+   @OneToMany
+   private Set<Fabricante> fabricante = new HashSet<Fabricante>();
 
    public Long getId()
    {
@@ -121,16 +126,6 @@ public class Produto implements Serializable
       this.estoque = estoque;
    }
 
-   public Fabricante getFabricante()
-   {
-      return fabricante;
-   }
-
-   public void setFabricante(Fabricante fabricante)
-   {
-      this.fabricante = fabricante;
-   }
-
    public Double getPrecoCusto()
    {
       return precoCusto;
@@ -165,5 +160,15 @@ public class Produto implements Serializable
       if (MargemLucro != null)
          result += ", MargemLucro: " + MargemLucro;
       return result;
+   }
+
+   public Set<Fabricante> getFabricante()
+   {
+      return this.fabricante;
+   }
+
+   public void setFabricante(final Set<Fabricante> fabricante)
+   {
+      this.fabricante = fabricante;
    }
 }
